@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Godrej Alira</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero Background -->
+  <div class="hero-background"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Godrej Alira</div>
+    <div class="hamburger" id="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" onclick="closeMenu()">Home</a></li>
+      <li><a href="#features" onclick="closeMenu()">Features</a></li>
+      <li><a href="#amenities" onclick="closeMenu()">Amenities</a></li>
+      <li><a href="#about" onclick="closeMenu()">About Us</a></li>
+      <li><a href="#floor-plans" onclick="closeMenu()">Floor Plans</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact Us</a></li>
+      <li><a href="#map" onclick="closeMenu()">Map</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <h1>Experience Luxury Living in Noida</h1>
+      <p>Premium 3 & 4 BHK apartments with world-class amenities and smart home technology</p>
+      <a href="#contact" class="btn">Contact Us</a>
+      <a href="#" id="brochureBtn" class="btn brochure-btn">Download Brochure</a>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <h2>Project Features</h2>
+    <div class="cards-container">
+      <div class="card">
+        <img class="circle-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Prime Location" />
+        <h3>Prime Location</h3>
+        <p>Strategically located near Noida Expressway with excellent connectivity to Delhi, Noida, and Greater Noida.</p>
+      </div>
+      <div class="card">
+        <img class="circle-img" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80" alt="Vastu-Compliant" />
+        <h3>Vastu-Compliant</h3>
+        <p>Thoughtfully designed layouts following Vastu principles to ensure positive energy flow in every home.</p>
+      </div>
+      <div class="card">
+        <img class="circle-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Security" />
+        <h3>Advanced Security</h3>
+        <p>24/7 surveillance with CCTV cameras, biometric access, and trained security personnel for complete safety.</p>
+      </div>
+      <div class="card">
+        <img class="circle-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Eco-Friendly Design" />
+        <h3>Eco-Friendly Design</h3>
+        <p>Sustainable living with rainwater harvesting, solar panels, and energy-efficient appliances.</p>
+      </div>
+      <div class="card">
+        <img class="circle-img" src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80" alt="Smart Home Technology" />
+        <h3>Smart Home Technology</h3>
+        <p>Control lighting, temperature, and security systems from your smartphone with our integrated home automation.</p>
+      </div>
+      <div class="card">
+        <img class="circle-img" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Spacious Interiors" />
+        <h3>Spacious Interiors</h3>
+        <p>Generously sized rooms with premium finishes, large windows, and optimal space utilization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Section -->
+  <section class="section" id="amenities">
+    <h2>Premium Amenities</h2>
+    <p class="amenities-description">Designed for your comfort and convenience, Godrej Alira offers an unparalleled living experience with these world-class amenities:</p>
+    
+    <div class="amenities-slider">
+      <div class="slider-container" id="sliderContainer">
+        <div class="slider-slide">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Swimming Pool" class="slider-image" />
+          <div class="slider-caption">
+            <h3>Infinity Swimming Pool</h3>
+            <p>Relax and unwind in our temperature-controlled infinity pool with stunning views</p>
+          </div>
+        </div>
+        <div class="slider-slide">
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gymnasium" class="slider-image" />
+          <div class="slider-caption">
+            <h3>Fully Equipped Gym</h3>
+            <p>State-of-the-art fitness center with cardio and weight training equipment</p>
+          </div>
+        </div>
+        <div class="slider-slide">
+          <img src="https://images.unsplash.com/photo-1584466977773-e625c37cdd50?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Clubhouse" class="slider-image" />
+          <div class="slider-caption">
+            <h3>Luxury Clubhouse</h3>
+            <p>Exclusive clubhouse with entertainment zones, party hall, and lounge areas</p>
+          </div>
+        </div>
+        <div class="slider-slide">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kids Play Area" class="slider-image" />
+          <div class="slider-caption">
+            <h3>Children's Play Area</h3>
+            <p>Safe and fun play zone for kids with modern equipment and supervision</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider-nav">
+        <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      
+      <div class="slider-dots" id="sliderDots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+    
+  <!-- About Section -->
+  <section class="section" id="about">
+    <h2>About Godrej Alira</h2>
+    <div class="about-content">
+      <p>Godrej Alira represents the pinnacle of luxury living in Noida, combining contemporary design with timeless elegance. As part of the esteemed Godrej Properties portfolio, we bring decades of expertise in creating residential spaces that redefine urban living.</p>
+      
+      <p>Strategically located in Sector 150, Noida, Godrej Alira offers seamless connectivity to major business hubs, educational institutions, healthcare facilities, and entertainment centers. The project is designed to provide residents with a perfect balance of convenience and tranquility.</p>
+      
+      <p>Our commitment to sustainability is evident in every aspect of Godrej Alira. From energy-efficient lighting and water conservation systems to extensive green spaces and eco-friendly construction materials, we've created a community that respects the environment while offering modern comforts.</p>
+      
+      <p>The residences at Godrej Alira are designed with meticulous attention to detail, featuring spacious layouts, premium finishes, and smart home technology. Whether you're looking for a comfortable 3 BHK or a luxurious 4 BHK apartment, each home is crafted to exceed expectations.</p>
+      
+      <p>Experience the Godrej difference - where quality, innovation, and customer satisfaction come together to create homes that nurture and inspire.</p>
+    </div>
+  </section>
+
+  <!-- Floor Plans Section -->
+<section class="section" id="floor-plans">
+  <h2>Floor Plans</h2>
+  <p class="floor-plans-description">Explore our thoughtfully designed living spaces that combine functionality with elegance. Each residence at Godrej Alira is crafted with premium materials and smart home features.</p>
+
+  <div class="floor-plan-cards">
+    <!-- Card 1 -->
+    <div class="floor-plan-card">
+      <img src="https://www.capitalgreensdelhi.com/assets/images/floor-plan/Phase-1/3bhk+2t-3rd-29th-typical-floor-plan-E34-C294-block-1568-sqft.webp" alt="3 BHK Floor Plan" />
+      <h3>3 BHK Luxury Apartment</h3>
+      <button class="enquire-btn">Enquire Now</button>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="floor-plan-card">
+      <img src="https://online.visual-paradigm.com/repository/images/da60163b-02ed-4846-b95b-e40c41b75891/floor-plan-design/small-house-floor-plan-with-dimensions.png" alt="4 BHK Floor Plan" />
+      <h3>4 BHK Luxury Apartment</h3>
+      <button class="enquire-btn">Enquire Now</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="floor-plan-card">
+      <img src="https://wpmedia.roomsketcher.com/content/uploads/2022/01/06145940/What-is-a-floor-plan-with-dimensions.png" alt="3 BHK Premium Floor Plan" />
+      <h3>2  BHK Premium Apartment</h3>
+      <button class="enquire-btn">Enquire Now</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Additional Floor Plan Information -->
+  <div class="floor-plan-features">
+    <h3>Standard Features Across All Apartments</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <i class="fas fa-paint-roller"></i>
+        <h4>Premium Finishes</h4>
+        <p>Italian marble flooring, designer wall finishes, and false ceilings in living areas</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-door-open"></i>
+        <h4>Doors & Windows</h4>
+        <p>Premium branded main door, designer internal doors, and UPVC windows</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-lightbulb"></i>
+        <h4>Lighting</h4>
+        <p>LED lighting fixtures with smart home automation compatibility</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-faucet"></i>
+        <h4>Plumbing</h4>
+        <p>Premium branded sanitaryware and concealed plumbing with 24/7 water supply</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-wind"></i>
+        <h4>Air Conditioning</h4>
+        <p>Pre-installed AC points in all bedrooms with provision for centralized AC</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Safety Features</h4>
+        <p>Fire detection system, earthquake-resistant structure, and CCTV surveillance</p>
+      </div>
+    </div>
+  </div>
+  <!-- Floor Plans Section -->
+<section class="section" id="floor-plans">
+  <h2>Floor Plan Images </h2>
+  <p class="floor-plans-description">Explore our thoughtfully designed living spaces that combine functionality with elegance. Each residence at Godrej Alira is crafted with premium materials and smart home features.</p>
+
+  <!-- Tabbed Floor Plan Images -->
+  <div class="floor-plan-tabs">
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="3bhk-luxury">3 BHK Luxury</button>
+      <button class="tab-btn" data-tab="4bhk-premium">4 BHK Premium</button>
+      <button class="tab-btn" data-tab="3bhk-premium">3 BHK Premium</button>
+      <button class="tab-btn" data-tab="2bhk-deluxe">2 BHK Deluxe</button>
+      <button class="tab-btn" data-tab="penthouse">Penthouse</button>
+    </div>
+
+    <div class="tab-content">
+      <!-- 3 BHK Luxury -->
+      <div class="tab-pane active" id="3bhk-luxury">
+        <img src="https://wpmedia.roomsketcher.com/content/uploads/2022/01/06145940/What-is-a-floor-plan-with-dimensions.png" alt="3 BHK Luxury Floor Plan" class="floor-plan-img">
+        <div class="floor-plan-info">
+          <h3>3 BHK Luxury Apartment</h3>
+          <ul class="floor-plan-details">
+            <li><strong>Area:</strong> 1850 sq.ft</li>
+            <li><strong>Bedrooms:</strong> 3 (Master with walk-in closet)</li>
+            <li><strong>Bathrooms:</strong> 3 (Premium fittings)</li>
+            <li><strong>Kitchen:</strong> Modular with breakfast counter</li>
+          </ul>
+          <button class="enquire-btn">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- 4 BHK Premium -->
+      <div class="tab-pane" id="4bhk-premium">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz557KbZC7CJRtl4c9hfmBBO-kZlcEcByppg&s" alt="4 BHK Premium Floor Plan" class="floor-plan-img">
+        <div class="floor-plan-info">
+          <h3>4 BHK Premium Apartment</h3>
+          <ul class="floor-plan-details">
+            <li><strong>Area:</strong> 2450 sq.ft</li>
+            <li><strong>Bedrooms:</strong> 4 (All with attached bathrooms)</li>
+            <li><strong>Bathrooms:</strong> 4 (Luxury fittings)</li>
+            <li><strong>Special:</strong> Servant room with toilet</li>
+          </ul>
+          <button class="enquire-btn">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- 3 BHK Premium -->
+      <div class="tab-pane" id="3bhk-premium">
+        <img src="https://online.visual-paradigm.com/repository/images/da60163b-02ed-4846-b95b-e40c41b75891/floor-plan-design/small-house-floor-plan-with-dimensions.png" alt="3 BHK Premium Floor Plan" class="floor-plan-img">
+        <div class="floor-plan-info">
+          <h3>3 BHK Premium Apartment</h3>
+          <ul class="floor-plan-details">
+            <li><strong>Area:</strong> 2100 sq.ft</li>
+            <li><strong>Bedrooms:</strong> 3 (Master with dressing area)</li>
+            <li><strong>Study:</strong> Convertible to home office</li>
+            <li><strong>Kitchen:</strong> Modular with island counter</li>
+          </ul>
+          <button class="enquire-btn">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- 2 BHK Deluxe -->
+      <div class="tab-pane" id="2bhk-deluxe">
+        <img src="https://www.researchgate.net/publication/356610760/figure/fig1/AS:11431281350961810@1743759439513/Sample-floor-plan-image-with-the-specification-of-different-room-sizes-and-furniture.tif" alt="2 BHK Deluxe Floor Plan" class="floor-plan-img">
+        <div class="floor-plan-info">
+          <h3>2 BHK Deluxe Apartment</h3>
+          <ul class="floor-plan-details">
+            <li><strong>Area:</strong> 1350 sq.ft</li>
+            <li><strong>Bedrooms:</strong> 2 (Both with attached bathrooms)</li>
+            <li><strong>Living:</strong> Spacious with balcony access</li>
+            <li><strong>Kitchen:</strong> Modular with breakfast nook</li>
+          </ul>
+          <button class="enquire-btn">Enquire Now</button>
+        </div>
+      </div>
+
+      <!-- Penthouse -->
+      <div class="tab-pane" id="penthouse">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVzmm8mXBwGma9GYkPNpSfDFFXFjLOBbHfNw&s" alt="Penthouse Floor Plan" class="floor-plan-img">
+        <div class="floor-plan-info">
+          <h3>Penthouse</h3>
+          <ul class="floor-plan-details">
+            <li><strong>Area:</strong> 3800 sq.ft</li>
+            <li><strong>Bedrooms:</strong> 4 (All master suites)</li>
+            <li><strong>Terrace:</strong> Private rooftop terrace</li>
+            <li><strong>Special:</strong> Home theater and bar area</li>
+          </ul>
+          <button class="enquire-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Tab functionality
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons and panes
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanes.forEach(pane => pane.classList.remove('active'));
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      // Show corresponding pane
+      const tabId = this.getAttribute('data-tab');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+
+  // Hover effect for floor plan items
+  const floorPlanPanes = document.querySelectorAll('.tab-pane');
+  
+  floorPlanPanes.forEach(pane => {
+    // For desktop - hover effect
+    pane.addEventListener('mouseenter', function() {
+      if (window.innerWidth > 768) {
+        this.querySelector('.floor-plan-info').style.bottom = '0';
+        this.querySelector('.floor-plan-img').style.transform = 'scale(1.03)';
+      }
+    });
+    
+    pane.addEventListener('mouseleave', function() {
+      if (window.innerWidth > 768) {
+        this.querySelector('.floor-plan-info').style.bottom = '-100%';
+        this.querySelector('.floor-plan-img').style.transform = 'scale(1)';
+      }
+    });
+    
+    // For mobile - always show info
+    if (window.innerWidth <= 768) {
+      pane.querySelector('.floor-plan-info').style.bottom = '0';
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+      floorPlanPanes.forEach(pane => {
+        pane.querySelector('.floor-plan-info').style.bottom = '0';
+      });
+    } else {
+      floorPlanPanes.forEach(pane => {
+        if (!pane.classList.contains('active')) {
+          pane.querySelector('.floor-plan-info').style.bottom = '-100%';
+        }
+      });
+    }
+  });
+});
+</script>
+
+  <!-- YouTube Video -->
+  <div class="video-container">
+    <h3>Take a Virtual Tour</h3>
+    <div class="video-wrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/3qyhgV0Zew0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+<section class="sheets-section">
+
+  <div class="sheets-container">
+    <div class="sheet-box">
+      <h3>Payment Sheet</h3>
+      <div class="image-container">
+        <img src="https://i.pinimg.com/736x/8f/50/50/8f5050818b5045667d0294dbb6b4e778.jpg" alt="Payment Sheet">
+        <div class="blur-overlay"></div>
+        <div class="login-form">
+          <h4>Login to Access</h4>
+          <input type="text" placeholder="Username" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-box">
+      <h3>Cost Sheet</h3>
+      <div class="image-container">
+        <img src="https://imgv2-2-f.scribdassets.com/img/document/81018957/original/cd31270bf9/1?v=1" alt="Cost Sheet">
+        <div class="blur-overlay"></div>
+        <div class="login-form">
+          <h4>Login to Access</h4>
+          <input type="text" placeholder="Username" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  function showLogin(element) {
+    const blurOverlay = element.querySelector('.blur-overlay');
+    const loginForm = element.querySelector('.login-form');
+    
+    blurOverlay.style.opacity = '1';
+    loginForm.style.opacity = '1';
+  }
+
+  function hideLogin(element) {
+    const blurOverlay = element.querySelector('.blur-overlay');
+    const loginForm = element.querySelector('.login-form');
+    
+    blurOverlay.style.opacity = '0';
+    loginForm.style.opacity = '0';
+  }
+
+  // Add form submission handling
+  document.querySelectorAll('.login-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = this.querySelector('input[type="text"]').value;
+      const password = this.querySelector('input[type="password"]').value;
+      
+      // Add your authentication logic here
+      alert(`Login attempted with:\nUsername: ${username}\nPassword: ${password}`);
+      
+      // Clear form
+      this.reset();
+    });
+  });
+</script>
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <h2>Get in Touch</h2>
+    <div class="contact-container">
+      <form id="contactForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required />
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+91-XXXXXXXXXX" required />
+        <label for="message">How can we help you?</label>
+        <textarea id="message" name="message" rows="4" placeholder="Your message here" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="section" id="map">
+    <h2>Location Map</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.2233913125423!2d77.33510761508065!3d28.50288988246753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce626851f7009%3A0x621185133cfd1ad1!2sGodrej%20Properties!5e0!3m2!1sen!2sin!4v1623939667592!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Icon -->
+  <div id="scrollToTopIcon" title="Scroll to top"><i class="fas fa-arrow-up"></i></div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Login to Download Brochure</h2>
+      <form id="loginForm">
+        <label for="username">Email Address</label>
+        <input type="email" id="username" name="username" placeholder="Enter your email" required />
+        
+        <label for="password">Phone Number</label>
+        <input type="tel" id="password" name="password" placeholder="Enter your phone number" required />
+        
+        <button type="submit" class="btn">Download Brochure</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Fixed WhatsApp and Call Icons -->
+  <div class="fixed-contact-icons">
+    <a href="https://wa.me/919999999999" target="_blank" aria-label="WhatsApp" class="contact-icon whatsapp-icon"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+919999999999" aria-label="Call" class="contact-icon call-icon"><i class="fas fa-phone"></i></a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Godrej Properties. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
