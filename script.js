@@ -1,68 +1,46 @@
-// Mobile Menu Toggle
-document.getElementById('hamburger').addEventListener('click', function () {
-  this.classList.toggle('active');
-  document.getElementById('nav-links').classList.toggle('active');
-  document.body.classList.toggle('no-scroll');
-});
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const navbar = document.querySelector('.navbar');
+  const navItems = document.querySelectorAll('.nav-links li a');
 
-function closeMenu() {
-  document.getElementById('hamburger').classList.remove('active');
-  document.getElementById('nav-links').classList.remove('active');
-  document.body.classList.remove('no-scroll');
-}
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      closeMenu();
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
-
-      if (history.pushState) {
-        history.pushState(null, null, targetId);
-      } else {
-        location.hash = targetId;
-      }
-    }
+  // Toggle mobile menu
+  hamburger.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    navbar.classList.toggle('menu-open'); // Optional: add special class when menu is open
   });
-});
 
-// Scroll to top functionality
-const scrollTopIcon = document.getElementById('scrollToTopIcon');
-scrollTopIcon.addEventListener('click', function () {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Show/hide scroll to top button based on scroll position
-window.addEventListener('scroll', function () {
-  if (window.pageYOffset > 300) {
-    scrollTopIcon.style.display = 'flex';
-    setTimeout(() => {
-      scrollTopIcon.style.opacity = '1';
-    }, 10);
-  } else {
-    scrollTopIcon.style.opacity = '0';
-    setTimeout(() => {
-      if (window.pageYOffset <= 300) {
-        scrollTopIcon.style.display = 'none';
+  // Close menu when a nav link is clicked
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (navLinks.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        navbar.classList.remove('menu-open');
       }
-    }, 300);
-  }
+    });
+  });
 
   // Navbar background on scroll
-  const navbar = document.querySelector('.navbar');
-  if (window.pageYOffset > 50) {
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+
+    // Close menu when scrolling (optional)
+    if (navLinks.classList.contains('active') && window.innerWidth <= 768) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      navbar.classList.remove('menu-open');
+    }
+  });
+
+  // Initial check for scroll position
+  if (window.scrollY > 50) {
     navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
   }
 });
 
@@ -204,30 +182,135 @@ document.addEventListener('DOMContentLoaded', function () {
       showSlide(currentSlide + 1);
     }, 5000);
 
-// Updated Enquire Now to trigger login modal
-document.querySelectorAll('.enquire-btn').forEach(button => {
-  button.addEventListener('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const modal = document.getElementById('loginModal');
-    const closeBtn = modal.querySelector('.close');
-
-    modal.style.display = 'flex';
-    setTimeout(() => {
-      modal.style.opacity = '1';
-      modal.querySelector('.modal-content').style.transform = 'translateY(0)';
-    }, 10);
-
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('modal-open');
-
-    modal.addEventListener('click', function (event) {
-      if (event.target === modal) {
-        closeBtn.click();
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all floor plan cards
+  const floorPlanCards = document.querySelectorAll('.floor-plan-card');
+  
+  // Add event listeners to each card
+  floorPlanCards.forEach(card => {
+    const enquireBtn = card.querySelector('.enquire-btn');
+    const cardImg = card.querySelector('img');
+    
+    // Show/hide enquire button on hover
+    card.addEventListener('mouseenter', function() {
+      enquireBtn.style.opacity = '1';
+      enquireBtn.style.transform = 'translateY(0) translateX(-50%)';
+      cardImg.style.transform = 'scale(1.05)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      enquireBtn.style.opacity = '0';
+      enquireBtn.style.transform = 'translateY(20px) translateX(-50%)';
+      cardImg.style.transform = 'scale(1)';
+    });
+    
+    // Enquire button click handler
+    enquireBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const planTitle = card.querySelector('h3').textContent;
+      showEnquiryModal(planTitle);
     });
   });
+  
+  // Mobile touch support
+  if ('ontouchstart' in window) {
+    floorPlanCards.forEach(card => {
+      const enquireBtn = card.querySelector('.enquire-btn');
+      enquireBtn.style.opacity = '1';
+      enquireBtn.style.transform = 'none';
+    });
+  }
+  
+  // Show enquiry modal function
+  function showEnquiryModal(planTitle) {
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'enquiry-modal-overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    `;
+    
+    // Create modal content
+    const modal = document.createElement('div');
+    modal.className = 'enquiry-modal';
+    modal.style.cssText = `
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+    `;
+    
+    modal.innerHTML = `
+      <h3>Enquire About ${planTitle}</h3>
+      <form id="enquiry-form">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Your Phone Number">
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Enquiry</button>
+      </form>
+      <button class="close-modal">&times;</button>
+    `;
+    
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    
+    // Close modal handlers
+    const closeBtn = modal.querySelector('.close-modal');
+    closeBtn.style.cssText = `
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    `;
+    
+    closeBtn.addEventListener('click', function() {
+      document.body.removeChild(overlay);
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        document.body.removeChild(overlay);
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    // Form submission handler
+    const form = modal.querySelector('#enquiry-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Here you would typically send the form data to your server
+      alert(`Thank you for your enquiry about ${planTitle}! We'll contact you soon.`);
+      document.body.removeChild(overlay);
+      document.body.style.overflow = 'auto';
+    });
+  }
 });
 
 // Hover effect on cards
@@ -250,3 +333,6 @@ document.querySelectorAll('.card').forEach(card => {
             blurOverlay.classList.add('hidden');
             loginForm.style.display = 'block';
         });
+        
+  
+        

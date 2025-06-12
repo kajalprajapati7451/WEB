@@ -101,61 +101,75 @@ h3 {
   background: #128C7E;
 }
 
-/* Navbar */
+/* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
+  padding: 1.5rem 5%;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
   transition: var(--transition);
-  height: 70px;
+  height: 80px;
   background: transparent;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .navbar.scrolled {
   background: rgba(0, 98, 65, 0.95);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 10px 5%;
-  height: 60px;
+  padding: 1rem 5%;
+  height: 70px;
 }
 
+/* Logo Styles */
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--white);
-  display: flex;
-  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1001;
 }
 
-.logo::before {
+.logo::after {
   content: '';
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  background-color:transparent;
-  border-radius: 50%;
-  margin-right: 10px;
-  transition: var(--transition);
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-color);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
 }
 
+.logo:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Navigation Links */
 .nav-links {
   display: flex;
   list-style: none;
+  gap: 1.5rem;
 }
 
 .nav-links li a {
   color: var(--white);
   text-decoration: none;
-  margin-left: 25px;
   font-weight: 600;
   transition: var(--transition);
   position: relative;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .nav-links li a::after {
@@ -164,10 +178,9 @@ h3 {
   width: 0;
   height: 2px;
   background: var(--accent-color);
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   transition: var(--transition);
-  border-radius: 2px;
 }
 
 .nav-links li a:hover {
@@ -178,34 +191,123 @@ h3 {
   width: 100%;
 }
 
+/* Enhanced Hamburger Menu Icon */
 .hamburger {
   display: none;
   cursor: pointer;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 25px;
-  height: 18px;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
   z-index: 1001;
+  position: relative;
+  width: 30px;
+  height: 24px;
 }
 
-.hamburger div {
+.hamburger span {
+  display: block;
+  position: absolute;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: var(--white);
-  transition: var(--transition);
   border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform-origin: center;
 }
 
-.hamburger.active div:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+.hamburger span:nth-child(1) {
+  top: 0;
 }
 
-.hamburger.active div:nth-child(2) {
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+}
+
+/* Animated X Transformation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
-.hamburger.active div:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Menu Enhancements */
+@media (max-width: 992px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(0, 98, 65, 0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+  
+  .nav-links li {
+    margin: 15px 0;
+  }
+  
+  .nav-links li a {
+    margin-left: 0;
+    font-size: 1.3rem;
+    color: var(--white);
+  }
+  /* Overlay when menu is open */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+/* Logo Styling */
+.logo {
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Scrolled State Enhancement */
+.navbar.scrolled {
+  background: rgba(0, 70, 45, 0.9);
 }
 
 /* Hero Section */
@@ -572,12 +674,18 @@ h3 {
   text-align: center;
 }
 
+.floor-plan-details {
+  padding: 0 20px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
 .enquire-btn {
   display: block;
   width: calc(100% - 40px);
-  margin: 20px auto;
   padding: 12px;
-  background: #2c3e50;
+  background: rgba(44, 62, 80, 0.9); /* Semi-transparent background */
   color: white;
   border: none;
   border-radius: 6px;
@@ -585,35 +693,247 @@ h3 {
   cursor: pointer;
   transition: all 0.3s ease;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translate(-50%, 20px);
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  top: 50%; /* Position at vertical center */
+  left: 50%; /* Position at horizontal center */
+  z-index: 2;
+  backdrop-filter: blur(2px); /* Slight blur effect */
+  text-align: center;
+  max-width: 200px; /* Limit button width */
+  margin: 0; /* Remove default margin */
 }
 
 .floor-plan-card:hover .enquire-btn {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, -50%); /* Perfectly centered */
 }
 
-.enquire-btn:hover {
-  background: #e74c3c;
+.floor-plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.floor-plan-card:hover::before {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.floor-plan-card h3 {
+  position: relative;
+  z-index: 2; /* Keep title above overlay */
+  transition: all 0.3s ease;
+}
+
+.floor-plan-card:hover h3 {
+  transform: translateY(-20px); /* Move title up slightly */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .floor-plan-cards {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-  
   .enquire-btn {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
     position: static;
     width: auto;
-    margin: 20px;
+    margin: 20px auto;
+    max-width: none;
+    background: #2c3e50; /* Solid color on mobile */
+    backdrop-filter: none;
+  }
+  
+  .floor-plan-card::before {
+    display: none; /* No overlay on mobile */
+  }
+  
+  .floor-plan-card:hover h3 {
+    transform: none;
+  }
+}
+/* Floor Plan Card Hover Effects */
+.floor-plan-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.floor-plan-card img {
+  transition: transform 0.5s ease;
+}
+
+.floor-plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Enquire Button Styling */
+.enquire-btn {
+  display: block;
+  width: calc(100% - 40px);
+  padding: 12px;
+  background: rgba(44, 62, 80, 0.9);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px) translateX(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+  text-align: center;
+  max-width: 200px;
+  margin: 0;
+}
+
+/* Modal Overlay Styling */
+.enquiry-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Content Styling */
+.enquiry-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.enquiry-modal h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Form Styling */
+#enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #2c3e50;
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Button Styling */
+.submit-btn {
+  padding: 14px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #e74c3c;
+}
+
+/* Close Button Styling */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #7f8c8d;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #e74c3c;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .enquire-btn {
+    opacity: 1;
+    transform: none;
+    position: static;
+    width: auto;
+    margin: 20px auto;
+    max-width: none;
+    background: #2c3e50;
+    backdrop-filter: none;
+  }
+  
+  .enquiry-modal {
+    padding: 20px;
+  }
+  
+  .enquiry-modal h3 {
+    font-size: 1.3rem;
   }
 }
 /* Floor Plan Features */
@@ -701,194 +1021,250 @@ h3 {
   border: none;
 }
 /* Floor Plans Section */
-#floor-plans {
+/* Floor Plans Section Styles */
+.floor-plans-section {
   padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.floor-plans-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2.5rem;
 }
 
 .floor-plans-description {
   text-align: center;
   max-width: 800px;
   margin: 0 auto 40px;
-  color: #555;
+  color: #666;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
 /* Tab Styles */
+.floor-plan-tabs {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .tab-buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
   margin-bottom: 30px;
+  gap: 10px;
 }
 
 .tab-btn {
-  padding: 10px 20px;
-  background: #f5f5f5;
+  padding: 12px 24px;
+  background-color: #f0f0f0;
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  font-size: 1rem;
   font-weight: 600;
+  color: #555;
   transition: all 0.3s ease;
-  font-size: 14px;
 }
 
 .tab-btn:hover {
-  background: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 .tab-btn.active {
-  background: var(--primary-color, #2c3e50);
+  background-color: #2c3e50;
   color: white;
 }
 
-/* Tab Content */
 .tab-content {
-  position: relative;
-  min-height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .tab-pane {
   display: none;
-  animation: fadeIn 0.5s ease;
+  padding: 0;
 }
 
 .tab-pane.active {
   display: block;
 }
 
-/* Floor Plan Card */
-.tab-pane {
+/* Carousel Styles */
+.floor-plan-carousel {
   position: relative;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  height: 500px;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .floor-plan-img {
   width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
+  height: 100%;
+  object-fit: contain;
+  background-color: #f5f5f5;
+  padding: 20px;
 }
 
-.floor-plan-info {
+.carousel-control {
   position: absolute;
-  bottom: -100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control.prev {
+  left: 20px;
+}
+
+.carousel-control.next {
+  right: 20px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  padding: 20px;
-  transition: bottom 0.3s ease;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
 }
 
-.tab-pane:hover .floor-plan-info {
-  bottom: 0;
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.tab-pane:hover .floor-plan-img {
-  transform: scale(1.03);
+.indicator.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Floor Plan Info Styles */
+.floor-plan-info {
+  padding: 30px;
+  background-color: white;
+}
+
+.floor-plan-info h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
 }
 
 .floor-plan-details {
-  margin: 15px 0;
-  padding-left: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
 }
 
 .floor-plan-details li {
-  margin-bottom: 8px;
-  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 1.1rem;
 }
 
 .enquire-btn {
-  background: var(--primary-color, #2c3e50);
+  background-color: #e74c3c;
   color: white;
   border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
-  cursor: pointer;
+  padding: 12px 30px;
+  font-size: 1rem;
   font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
-  margin-top: 10px;
 }
 
 .enquire-btn:hover {
-  background: var(--accent-color, #e74c3c);
-  transform: translateY(-2px);
+  background-color: #c0392b;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .floor-plan-carousel {
+    height: 400px;
+  }
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .tab-buttons {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    align-items: center;
   }
   
   .tab-btn {
-    flex: 0 0 auto;
-    padding: 8px 15px;
-    font-size: 13px;
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  
+  .floor-plan-carousel {
+    height: 300px;
   }
   
   .floor-plan-info {
-    position: relative;
-    bottom: 0;
-    background: rgba(0,0,0,0.9);
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .floor-plan-carousel {
+    height: 250px;
   }
   
- /* Floor Plan Image Size Adjustments */
-.floor-plan-img {
-  width: 100%;
-  height: 300px; /* Reduced from auto/400px */
-  object-fit: contain; /* Changed from cover to show full plan */
-  display: block;
-  margin: 0 auto;
-  padding: 15px;
-  transition: all 0.3s ease;
-}
-
-/* Container adjustments for smaller images */
-.tab-pane {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* Hover effect modifications */
-.tab-pane:hover .floor-plan-img {
-  transform: scale(1.02); /* More subtle zoom effect */
-  padding: 10px; /* Slightly reduce padding on hover */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .floor-plan-img {
-    height: 250px; /* Smaller on mobile */
-    padding: 10px;
+  .carousel-control {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+  
+  .floor-plan-info h3 {
+    font-size: 1.5rem;
+  }
+  
+  .floor-plan-details li {
+    font-size: 1rem;
   }
 }
 
-/* Enquire button positioning */
-.enquire-btn {
-  margin-top: 15px;
-  margin-bottom: 25px;
-  width: 80%; /* More compact button */
-}
-}
 /* Contact Section */
 #contact {
   background: url('https://webartdevelopers.com/blog/wp-content/uploads/2019/02/Pure-CSS-Animated-Background.gif');
@@ -1325,53 +1701,257 @@ footer {
   opacity: 1;
 }
 
-.login-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
+.sheet-box {
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
+  background: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  width: 80%;
-  max-width: 300px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.image-container:hover .login-form {
-  opacity: 1;
-}
-
-.login-form h4 {
-  margin-top: 0;
-  color: #2c3e50;
+.sheet-box h3 {
   text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
-.login-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
+.image-container {
+  position: relative;
+  overflow: hidden;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-.login-form button {
+.image-container img {
   width: 100%;
-  padding: 10px;
-  background-color: #3498db;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* New styles for login popup */
+  .login-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .login-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: popupFadeIn 0.3s ease;
+  }
+  
+  @keyframes popupFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .close-popup {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+  }
+  
+  .login-form {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .login-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .signup-text {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .signup-link {
+    color: #e74c3c;
+    text-decoration: none;
+  }
+  
+  /* Modified image click effect */
+  .image-container.active {
+    position: relative;
+  }
+  
+  .image-container.active .blur-overlay {
+    opacity: 1;
+    backdrop-filter: blur(5px);
+  }
+  
+  .image-container.active .enquire-overlay {
+    opacity: 1;
+  }
+  
+  .image-container.active .enquire-btn {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  /* Full Width Gallery with Compact Spacing */
+.gallery-section {
+  padding: 30px 0;  /* Reduced vertical spacing */
+  background: #f8f9fa;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-container {
+  max-width: 100%;  /* Full width */
+  margin: 0 auto;
+  padding: 0 10px;  /* Minimal side padding */
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 2.5rem;  /* Slightly reduced */
+  margin-bottom: 5px;  /* Tight spacing */
+  color: var(--primary-color);
+  padding: 0 10px;
+  font-weight: 600;
+}
+
+.section-subheading {
+  text-align: center;
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;  /* Reduced margin */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+  line-height: 1.4;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;  /* Minimal gap between items */
+  width: 100%;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  aspect-ratio: 1/1;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.gallery-item:hover {
+  transform: scale(0.98);
+  z-index: 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.15);  /* Slightly stronger zoom */
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+  padding: 12px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  text-align: center;
+  font-size: 0.9rem;  /* Compact caption */
 }
 
-.login-form button:hover {
-  background-color: #2980b9;
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  
+  .section-subheading {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+  
+  .gallery-section {
+    padding: 20px 0;
+  }
+  
+  .gallery-item {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-heading {
+    font-size: 1.6rem;
+  }
+  
+  .gallery-item img {
+    transform: scale(1.1);  /* Slightly less zoom on mobile */
+  }
 }
