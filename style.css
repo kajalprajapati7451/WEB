@@ -470,6 +470,7 @@ img {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
+
 /* Featured Properties */
 .featured-properties {
     background-color: #f9f9f9;
@@ -961,49 +962,34 @@ img {
     margin-right: 15px;
     margin-bottom: 15px;
 }
-
-/* Contact Us */
+/* Contact Us - Centered Form with Social Links Below */
 .contact-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .contact-info {
-    flex: 1;
-    min-width: 300px;
-    padding: 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-}
-
-.info-item {
-    display: flex;
-    margin-bottom: 30px;
-}
-
-.info-item i {
-    font-size: 1.5rem;
-    margin-right: 20px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.info-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.info-item p {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 5px;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+    background-color: white; /* Same as form background */
 }
 
 .social-links {
     display: flex;
-    margin-top: 40px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white; /* Matching form background */
+    width: 100%;
+    border-top: 1px solid #eee;
 }
 
 .social-links a {
@@ -1013,21 +999,22 @@ img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--primary-color);
     color: white;
-    margin-right: 10px;
+    margin: 0 10px;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    background-color: white;
-    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
 }
 
 .contact-form {
-    flex: 1;
-    min-width: 300px;
+    width: 100%;
+    max-width: 600px;
     padding: 40px;
+    background-color: white;
 }
 
 .form-group {
@@ -1058,6 +1045,16 @@ img {
     resize: vertical;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 30px 20px;
+    }
+    
+    .contact-info {
+        padding: 20px 15px;
+    }
+}
 /* Newsletter */
 .newsletter {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -2398,4 +2395,64 @@ img {
     transform: translate(-50%, -50%);
     opacity: 1;
   }
-  
+  /* Enquire Button Styles */
+.enquire-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative; /* For proper positioning */
+  z-index: 2; /* Ensure button stays above overlay */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.enquire-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Positioning the button in center of overlay */
+.enquire-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .enquire-overlay {
+  opacity: 1;
+}
+
+/* Blur effect on hover */
+.image-container:hover .blur-overlay {
+  backdrop-filter: blur(4px);
+}
+
+/* Image container setup */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  transition: backdrop-filter 0.3s ease;
+}
