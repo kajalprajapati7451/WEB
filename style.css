@@ -2702,3 +2702,340 @@ img {
   background: rgba(0, 0, 0, 0.3);
   transition: backdrop-filter 0.3s ease;
 }
+/* ======================
+   GLOBAL ANIMATIONS 
+   ====================== */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Fade-in animation for all sections */
+section {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ======================
+   HEADER ANIMATIONS 
+   ====================== */
+.header {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.nav-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ======================
+   HERO SECTION ANIMATIONS 
+   ====================== */
+.hero h1 {
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero p {
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.search-box {
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero-stats {
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======================
+   FEATURED PROPERTIES ANIMATIONS 
+   ====================== */
+.property-card {
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.property-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.property-image img {
+    transition: transform 0.8s ease;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.1);
+}
+
+/* ======================
+   FEATURES ANIMATIONS 
+   ====================== */
+.feature-card {
+    transition: all 0.4s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(58, 134, 255, 0.15);
+}
+
+.feature-icon {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: rotateY(180deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ======================
+   GALLERY ANIMATIONS 
+   ====================== */
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-overlay {
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item img {
+    transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ======================
+   STEPS ANIMATIONS 
+   ====================== */
+.step {
+    transition: all 0.4s ease;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+}
+
+.step-icon {
+    transition: all 0.4s ease;
+}
+
+.step:hover .step-icon {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
+}
+
+/* ======================
+   SERVICES ANIMATIONS 
+   ====================== */
+.service-card {
+    transition: all 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card a i {
+    transition: transform 0.3s ease;
+}
+
+.service-card a:hover i {
+    transform: translateX(5px);
+}
+
+/* ======================
+   TESTIMONIAL ANIMATIONS 
+   ====================== */
+.testimonial {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* ======================
+   ABOUT US ANIMATIONS 
+   ====================== */
+.about-image img {
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.experience-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ======================
+   CONTACT FORM ANIMATIONS 
+   ====================== */
+.form-group input,
+.form-group textarea {
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+}
+
+/* ======================
+   FOOTER ANIMATIONS 
+   ====================== */
+.footer-social a {
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-5px) rotate(5deg);
+}
+
+/* ======================
+   BUTTON ANIMATIONS 
+   ====================== */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+.btn-outline:hover {
+    color: white;
+}
+
+/* ======================
+   FLOATING BUTTONS ANIMATIONS 
+   ====================== */
+.floating-btn {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ======================
+   COMING SOON POPUP ANIMATIONS 
+   ====================== */
+.coming-soon-container::before {
+    animation: rotate 20s linear infinite;
+}
+
+.countdown-item {
+    animation: pulse 2s infinite alternate;
+}
+
+/* ======================
+   LOGIN/REGISTER POPUP ANIMATIONS 
+   ====================== */
+.auth-popup.active .auth-container {
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ======================
+   SHEETS SECTION ANIMATIONS 
+   ====================== */
+.image-container {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.blur-overlay {
+    transition: all 0.5s ease;
+}
+
+.enquire-btn {
+    transition: all 0.3s ease;
+}
+
+/* ======================
+   RESPONSIVE ADJUSTMENTS 
+   ====================== */
+@media (max-width: 768px) {
+    /* Disable some animations on mobile for performance */
+    .hero h1, .hero p, .search-box, .hero-stats {
+        animation: none;
+    }
+    
+    .property-card, .feature-card, .service-card {
+        transition: none;
+    }
+}
