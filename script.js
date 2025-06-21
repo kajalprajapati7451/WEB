@@ -614,75 +614,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-});
-
-    // Function to show the popup
-    function showComingSoonPopup() {
-        const popup = document.getElementById("comingSoonPopup");
-        popup.style.display = "flex";
-        
-        // Add close button functionality
-        const closeButton = document.createElement("button");
-        closeButton.innerHTML = "&times;";
-        closeButton.style.position = "absolute";
-        closeButton.style.top = "15px";
-        closeButton.style.right = "15px";
-        closeButton.style.background = "none";
-        closeButton.style.border = "none";
-        closeButton.style.color = "white";
-        closeButton.style.fontSize = "2rem";
-        closeButton.style.cursor = "pointer";
-        closeButton.style.zIndex = "10000";
-        
-        closeButton.addEventListener("click", function() {
-            popup.style.display = "none";
-        });
-        
-        document.querySelector(".coming-soon-container").appendChild(closeButton);
-    }
-
-    // Countdown Timer
-    function updateCountdown() {
-        // Set the launch date (change this to your desired launch date)
-        const launchDate = new Date("2023-12-31T00:00:00").getTime();
-        const now = new Date().getTime();
-        const distance = launchDate - now;
-        
-        // Calculate days, hours, minutes, seconds
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        // Display the result
-        document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-        
-        // If the countdown is finished
-        if (distance < 0) {
-            clearInterval(countdownTimer);
-            document.getElementById("days").innerHTML = "00";
-            document.getElementById("hours").innerHTML = "00";
-            document.getElementById("minutes").innerHTML = "00";
-            document.getElementById("seconds").innerHTML = "00";
-        }
-    }
-    
-    // Show popup when page loads
-    window.onload = function() {
-        showComingSoonPopup();
-        
-        // Update the countdown every 1 second
-        const countdownTimer = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-    };
-
-    // Prevent closing when clicking inside the popup content
-    document.querySelector('.coming-soon-container').addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
+})
     // Auth Popups Functionality
 document.addEventListener('DOMContentLoaded', function() {
   // Get all elements
